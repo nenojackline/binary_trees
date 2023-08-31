@@ -29,7 +29,6 @@ heap_t *heap_insert(heap_t **root, int value)
 	/*
 	 * Traverse tree to first empty slot based on the binary
 	 * representation of the number of fnleaves.
-	 * Example -
 	 * If there are 12 nodes in a complete tree, there are 5 fnleaves on
 	 * the 4th tier of the tree. 5 is 101 in binary. 1 corresponds to
 	 * right, 0 to left.
@@ -40,7 +39,8 @@ heap_t *heap_insert(heap_t **root, int value)
 	fnleaves & 1 ? (tree->right = new) : (tree->left = new);
 
 	fnflip = new;
-	for (; fnflip->parent && (fnflip->n > fnflip->parent->n); fnflip = fnflip->parent)
+	for (; fnflip->parent && (fnflip->n > fnflip->parent->n);
+			fnflip = fnflip->parent)
 	{
 		fntmp = fnflip->n;
 		fnflip->n = fnflip->parent->n;
