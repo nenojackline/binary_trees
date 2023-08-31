@@ -1,10 +1,11 @@
 #ifndef BINARY_TREES_H
 #define BINARY_TREES_H
 
-#include <stdlib.h>
-#include <stddef.h>
+/* standard libraries in c */
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
 #include <unistd.h>
 #include <math.h>
@@ -30,10 +31,10 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
-/* binary_tree_print.c */
+/* function for binary tree print */
 void binary_tree_print(const binary_tree_t *);
 
-/* tasks */
+/* prototypes of mandatory tasks */
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
@@ -54,7 +55,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree);
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
-/* Advanced tasks */
+/* Prototypes for Advanced tasks */
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 				     const binary_tree_t *second);
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
