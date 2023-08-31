@@ -9,11 +9,11 @@
  */
 bst_t *array_to_bst(int *array, size_t size)
 {
-	unsigned int i;
+	unsigned int b;
 	bst_t *root = NULL;
 
-	for (i = 0; i < size; i++)
-		bst_insert(&root, array[i]);
+	for (b = 0; b < size; b++)
+		bst_insert(&root, array[b]);
 
 	return (root);
 }

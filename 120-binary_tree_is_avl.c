@@ -12,11 +12,11 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return (btia_helper(tree, INT_MIN, INT_MAX));
+	return (fnbtia_helper(tree, INT_MIN, INT_MAX));
 }
 
 /**
- * btia_helper - helper that finds if a binary tree is an avl
+ * fnbtia_helper - helper that finds if a binary tree is an avl
  * @tree: pointer to the root node of the tree
  * @min: minimum value
  * @max: maximum value
@@ -24,23 +24,23 @@ int binary_tree_is_avl(const binary_tree_t *tree)
  * Return: 1 if tree is avl
  *         0 otherwise
  */
-int btia_helper(const binary_tree_t *tree, int min, int max)
+int fnbtia_helper(const binary_tree_t *tree, int min, int max)
 {
-	int path_l, path_r;
+	int fnpath_l, fnpath_r;
 
 	if (!tree)
 		return (1);
 	if (tree->n < min || tree->n > max)
 		return (0);
 
-	path_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
-	path_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+	fnpath_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	fnpath_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
 
-	if (abs(path_l - path_r) > 1)
+	if (abs(fnpath_l - fnpath_r) > 1)
 		return (0);
 
-	return (btia_helper(tree->left, min, tree->n - 1) &&
-		btia_helper(tree->right, tree->n + 1, max));
+	return (fnbtia_helper(tree->left, min, tree->n - 1) &&
+		fnbtia_helper(tree->right, tree->n + 1, max));
 	/* This is part of the BST check logic */
 }
 
@@ -53,13 +53,13 @@ int btia_helper(const binary_tree_t *tree, int min, int max)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t height_l = 0;
-	size_t height_r = 0;
+	size_t fnheight_l = 0;
+	size_t fnheight_r = 0;
 
 	if (!tree)
 		return (0);
 
-	height_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
-	height_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
-	return (height_l > height_r ? height_l : height_r);
+	fnheight_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	fnheight_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+	return (fnheight_l > fnheight_r ? fnheight_l : fnheight_r);
 }

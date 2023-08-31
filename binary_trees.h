@@ -79,15 +79,15 @@ int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 
 /* helper functions */
-int _pow_recursion(int x, int y);
+int fnPow_recursion(int a, int b);
 binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
 			  const binary_tree_t *second);
-void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
-int btic_helper(const binary_tree_t *tree, size_t index, size_t size);
-int btib_helper(const binary_tree_t *tree, int low, int hi);
+void fnbtlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
+int fnbtic_helper(const binary_tree_t *tree, size_t index, size_t size);
+int fnbtib_helper(const binary_tree_t *tree, int low, int hi);
 bst_t *bst_min_val(bst_t *root);
-int btia_helper(const binary_tree_t *tree, int low, int hi);
-int btih_helper(const binary_tree_t *tree);
-void sata_helper(avl_t **root, int *array, size_t lo, size_t hi);
+int fnbtia_helper(const binary_tree_t *tree, int low, int hi);
+int fnbtih_helper(const binary_tree_t *tree);
+void fnsata_helper(avl_t **root, int *array, size_t lo, size_t hi);
 
 #endif

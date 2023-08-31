@@ -8,19 +8,19 @@
  */
 size_t tree_size(const binary_tree_t *tree)
 {
-	size_t height_l = 0;
-	size_t height_r = 0;
+	size_t fnheight_l = 0;
+	size_t fnheight_r = 0;
 
 	if (!tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_size(tree->left);
+		fnheight_l = 1 + tree_size(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_size(tree->right);
+		fnheight_r = 1 + tree_size(tree->right);
 
-	return (height_l + height_r);
+	return (fnheight_l + fnheight_r);
 }
 
 /**
@@ -34,20 +34,20 @@ size_t tree_size(const binary_tree_t *tree)
  */
 int *heap_to_sorted_array(heap_t *heap, size_t *size)
 {
-	int i, *a = NULL;
+	int b, *c = NULL;
 
 	if (!heap || !size)
 		return (NULL);
 
 	*size = tree_size(heap) + 1;
 
-	a = malloc(sizeof(int) * (*size));
+	c = malloc(sizeof(int) * (*size));
 
-	if (!a)
+	if (!c)
 		return (NULL);
 
-	for (i = 0; heap; i++)
-		a[i] = heap_extract(&heap);
+	for (b = 0; heap; b++)
+		c[b] = heap_extract(&heap);
 
-	return (a);
+	return (c);
 }

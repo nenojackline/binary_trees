@@ -31,11 +31,11 @@ int successor(bst_t *node)
  */
 int two_children(bst_t *root)
 {
-	int new_value = 0;
+	int fnnew_value = 0;
 
-	new_value = successor(root->right);
-	root->n = new_value;
-	return (new_value);
+	fnnew_value = successor(root->right);
+	root->n = fnnew_value;
+	return (fnnew_value);
 }
 /**
  *remove_type - function that removes a node depending of its children
@@ -85,7 +85,7 @@ int remove_type(bst_t *root)
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	int type = 0;
+	int fntype = 0;
 
 	if (root == NULL)
 		return (NULL);
@@ -95,9 +95,9 @@ bst_t *bst_remove(bst_t *root, int value)
 		bst_remove(root->right, value);
 	else if (value == root->n)
 	{
-		type = remove_type(root);
-		if (type != 0)
-			bst_remove(root->right, type);
+		fntype = remove_type(root);
+		if (fntype != 0)
+			bst_remove(root->right, fntype);
 	}
 	else
 		return (NULL);

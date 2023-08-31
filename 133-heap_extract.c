@@ -8,21 +8,21 @@
  */
 size_t tree_height(const heap_t *tree)
 {
-	size_t height_l = 0;
-	size_t height_r = 0;
+	size_t fnheight_l = 0;
+	size_t fnheight_r = 0;
 
 	if (!tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_height(tree->left);
+		fnheight_l = 1 + tree_height(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_height(tree->right);
+		fnheight_r = 1 + tree_height(tree->right);
 
-	if (height_l > height_r)
-		return (height_l);
-	return (height_r);
+	if (fnheight_l > fnheight_r)
+		return (fnheight_l);
+	return (fnheight_r);
 }
 /**
  * tree_size_h - measures the sum of heights of a binary tree
@@ -32,19 +32,19 @@ size_t tree_height(const heap_t *tree)
  */
 size_t tree_size_h(const binary_tree_t *tree)
 {
-	size_t height_l = 0;
-	size_t height_r = 0;
+	size_t fnheight_l = 0;
+	size_t fnheight_r = 0;
 
 	if (!tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_size_h(tree->left);
+		fnheight_l = 1 + tree_size_h(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_size_h(tree->right);
+		fnheight_r = 1 + tree_size_h(tree->right);
 
-	return (height_l + height_r);
+	return (fnheight_l + fnheight_r);
 }
 
 /**
@@ -75,32 +75,32 @@ void _preorder(heap_t *tree, heap_t **node, size_t height)
 void heapify(heap_t *root)
 {
 	int value;
-	heap_t *tmp1, *tmp2;
+	heap_t *fntmp1, *fntmp2;
 
 	if (!root)
 		return;
 
-	tmp1 = root;
+	fntmp1 = root;
 
 	while (1)
 	{
-		if (!tmp1->left)
+		if (!fntmp1->left)
 			break;
-		if (!tmp1->right)
-			tmp2 = tmp1->left;
+		if (!fntmp1->right)
+			fntmp2 = fntmp1->left;
 		else
 		{
-			if (tmp1->left->n > tmp1->right->n)
-				tmp2 = tmp1->left;
+			if (fntmp1->left->n > fntmp1->right->n)
+				fntmp2 = fntmp1->left;
 			else
-				tmp2 = tmp1->right;
+				fntmp2 = fntmp1->right;
 		}
-		if (tmp1->n > tmp2->n)
+		if (fntmp1->n > fntmp2->n)
 			break;
-		value = tmp1->n;
-		tmp1->n = tmp2->n;
-		tmp2->n = value;
-		tmp1 = tmp2;
+		value = fntmp1->n;
+		fntmp1->n = fntmp2->n;
+		fntmp2->n = value;
+		fntmp1 = fntmp2;
 	}
 }
 
@@ -114,28 +114,28 @@ void heapify(heap_t *root)
 int heap_extract(heap_t **root)
 {
 	int value;
-	heap_t *heap_r, *node;
+	heap_t *fnheap_r, *node;
 
 	if (!root || !*root)
 		return (0);
-	heap_r = *root;
-	value = heap_r->n;
-	if (!heap_r->left && !heap_r->right)
+	fnheap_r = *root;
+	value = fnheap_r->n;
+	if (!fnheap_r->left && !fnheap_r->right)
 	{
 		*root = NULL;
-		free(heap_r);
+		free(fnheap_r);
 		return (value);
 	}
 
-	_preorder(heap_r, &node, tree_height(heap_r));
+	_preorder(fnheap_r, &node, tree_height(fnheap_r));
 
-	heap_r->n = node->n;
+	fnheap_r->n = node->n;
 	if (node->parent->right)
 		node->parent->right = NULL;
 	else
 		node->parent->left = NULL;
 	free(node);
-	heapify(heap_r);
-	*root = heap_r;
+	heapify(fnheap_r);
+	*root = fnheap_r;
 	return (value);
 }

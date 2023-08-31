@@ -16,11 +16,11 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		return (0);
 	size = binary_tree_size(tree);
 
-	return (btic_helper(tree, 0, size));
+	return (fnbtic_helper(tree, 0, size));
 }
 
 /**
- * btic_helper - checks if a binary tree is complete
+ * fnbtic_helper - checks if a binary tree is complete
  * @tree: a pointer to the root node of the tree to check
  * @index: node index to check
  * @size: number of nodes in the tree
@@ -29,7 +29,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
  *         0 if the tree is not complete
  *         0 if tree is NULL
  */
-int btic_helper(const binary_tree_t *tree, size_t index, size_t size)
+int fnbtic_helper(const binary_tree_t *tree, size_t index, size_t size)
 {
 	if (!tree)
 		return (1);
@@ -37,8 +37,8 @@ int btic_helper(const binary_tree_t *tree, size_t index, size_t size)
 	if (index >= size)
 		return (0);
 
-	return (btic_helper(tree->left, 2 * index + 1, size) &&
-		btic_helper(tree->right, 2 * index + 2, size));
+	return (fnbtic_helper(tree->left, 2 * index + 1, size) &&
+		fnbtic_helper(tree->right, 2 * index + 2, size));
 }
 
 /**
